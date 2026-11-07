@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Texas Hold'em &mdash; 6-max no-limit against five AI players</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="No-Limit Texas Hold'em in the browser: six seats, five AI personalities, correct side pots and hand evaluation, animated table, synthesized sound.">
+<meta property="og:image" content="screenshots/hero.jpg">
+<style>
+  :root { --gold: #e9c250; --paper: #f3e2b0; --muted: #b7a77a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(ellipse at 50% 0%, #1b2f24 0%, #06080a 60%); color: var(--paper); font-family: "Segoe UI", system-ui, sans-serif; line-height: 1.55; }
+  header { text-align: center; padding: 56px 20px 24px; }
+  header img.logo { width: min(760px, 92vw); filter: drop-shadow(0 0 30px rgba(255,200,90,.35)); }
+  header p.tag { letter-spacing: 5px; color: var(--muted); margin: 14px 0 28px; font-size: 14px; text-transform: uppercase; }
+  .cta { display: inline-block; padding: 16px 40px; border-radius: 14px; font-weight: 800; letter-spacing: 2px; color: #1a1200; text-decoration: none; background: linear-gradient(180deg, #fff3b0, #f3c400 40%, #b58900); box-shadow: 0 6px 0 #3a2a00, 0 14px 30px rgba(0,0,0,.6); }
+  .hero { display: block; width: min(1200px, 94vw); margin: 40px auto 0; border-radius: 14px; border: 2px solid #4a3b14; box-shadow: 0 30px 80px rgba(0,0,0,.8); }
+  main { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+  h2 { color: var(--gold); letter-spacing: 3px; font-size: 22px; margin: 56px 0 18px; border-bottom: 1px solid #3a3012; padding-bottom: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .card { background: rgba(255,255,255,.03); border: 1px solid #3a3012; border-radius: 12px; padding: 18px 20px; }
+  .card h3 { margin: 0 0 8px; color: #ffe9a8; font-size: 17px; } .card p { margin: 0; color: #d9ccaa; font-size: 15px; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; }
+  figure { margin: 0; } figure img { width: 100%; border-radius: 10px; border: 1px solid #3a3012; box-shadow: 0 12px 30px rgba(0,0,0,.6); }
+  figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; } td, th { border-bottom: 1px solid #2a2410; padding: 8px 10px; text-align: left; } th { color: var(--gold); }
+  code { background: #15131c; padding: 2px 6px; border-radius: 4px; color: #ffe9a8; }
+  footer { text-align: center; color: #7d6a3a; font-size: 13px; padding: 30px 20px 60px; }
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="../assets/logo.png" alt="TEXAS HOLD'EM">
+  <p class="tag">6-max no-limit &middot; five AI personalities &middot; real side pots</p>
+  <a class="cta" href="../index.html">PLAY IN YOUR BROWSER</a>
+  <img class="hero" src="screenshots/hero.jpg" alt="Showdown with the winning hand lit">
+</header>
+<main>
+  <h2>What it is</h2>
+  <p>No-Limit Texas Hold'em at a six-handed table against Vic, Luna, Benny, Rex and Sofia &mdash; five opponents with different
+    temperaments who decide from Monte-Carlo equity, pot odds and position. Plain HTML5 Canvas and Web Audio, no frameworks,
+    no build step. The rules engine is unit-tested: hand evaluation across 4,000 random seven-card hands, min-raise and
+    short-all-in rules, side pots with three different stacks, heads-up blinds, splits with odd chips.</p>
+  <h2>Features</h2>
+  <div class="grid">
+    <div class="card"><h3>Correct rules</h3><p>Blinds and button rotation (heads-up included), four betting rounds, minimum raises, all-ins that do not re-open action, side pots built from contributions, run-outs, showdown with the best five of seven and tie splitting.</p></div>
+    <div class="card"><h3>Five personalities</h3><p>Tight-passive, loose-aggressive, calling station, maniac and solid. Each estimates equity against the live field, weighs pot odds and position, bluffs at its own rate and sizes bets in its own style.</p></div>
+    <div class="card"><h3>Physical table</h3><p>Cards fly from the shoe and flip at showdown, chips fly to the bet spots, sweep to the pot and out to the winner, the dealer button walks, the winning five cards light up with the hand named.</p></div>
+    <div class="card"><h3>Your controls</h3><p>Fold, check/call, bet or raise with slider and presets (min, half pot, pot, max), all-in, a 20-second action timer, re-buy, hand-history feed, keyboard shortcuts, optional tournament blinds.</p></div>
+    <div class="card"><h3>Sound</h3><p>Synthesized card deals and flips, chip clinks and slides, check knocks, an all-in sting, win chimes, turn alerts and a generated dealer voice for the streets.</p></div>
+    <div class="card"><h3>Verified</h3><p><code>node tools/eval-test.js</code>, <code>tools/equity-check.js</code>, <code>tools/engine-test.js</code> and a headless Chrome smoke test that plays full hands.</p></div>
+  </div>
+  <h2>Screenshots</h2>
+  <div class="shots">
+    <figure><img src="screenshots/deal.jpg" alt="Dealing"><figcaption>Cards fly from the shoe to six seats.</figcaption></figure>
+    <figure><img src="screenshots/action.jpg" alt="Your action"><figcaption>Your action pre-flop with the raise slider and presets.</figcaption></figure>
+    <figure><img src="screenshots/flop.jpg" alt="The flop"><figcaption>The flop: bets slide into the pot, the board flips over.</figcaption></figure>
+    <figure><img src="screenshots/showdown.jpg" alt="Showdown"><figcaption>Showdown: hands revealed, the winning five lit, the pot pushed out.</figcaption></figure>
+    <figure><img src="screenshots/table.jpg" alt="Next hand"><figcaption>The next hand, button moved.</figcaption></figure>
+    <figure><img src="screenshots/help.jpg" alt="Help"><figcaption>Rules and keys.</figcaption></figure>
+  </div>
+  <h2>Controls</h2>
+  <table>
+    <tr><th>Action</th><th>Button</th><th>Key</th></tr>
+    <tr><td>Fold</td><td>FOLD</td><td><code>F</code></td></tr>
+    <tr><td>Check / call</td><td>CHECK or CALL</td><td><code>C</code> or <code>Space</code></td></tr>
+    <tr><td>Bet / raise to the slider amount</td><td>RAISE</td><td><code>R</code>; <code>&uarr;</code> <code>&darr;</code> adjust</td></tr>
+    <tr><td>All in</td><td>ALL IN</td><td><code>A</code></td></tr>
+    <tr><td>Help / mute</td><td>? / speaker</td><td><code>H</code> / <code>M</code></td></tr>
+  </table>
+  <h2>Run it yourself</h2>
+  <p>Open <code>index.html</code> or serve the folder (<code>python -m http.server 8768</code>, or <code>start.cmd</code> on Windows). <code>?tourney=1</code> raises the blinds every eight hands with no re-buys. See the README for the test tools.</p>
+</main>
+<footer>Unofficial recreation for entertainment only &middot; play money, no real wagering &middot; portraits and voice generated for this project, all other sound synthesized at runtime.</footer>
+</body>
+</html>

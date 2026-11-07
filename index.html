@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Texas Hold'em &mdash; 6-max No-Limit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="1920" height="1080"></canvas>
+  <div id="hud"></div>
+  <div id="topbar"><button id="btn-help" class="btn icon" title="Help (H)">?</button><button id="btn-sound" class="btn icon" title="Mute (M)">&#128266;</button><input id="vol" type="range" min="0" max="1" step="0.01" title="Volume"></div>
+  <div id="history"><div class="title">HAND HISTORY</div><div id="feed"></div></div>
+  <div id="message"></div>
+  <button id="btn-rebuy" class="btn gold hidden">REBUY 1,000</button>
+
+  <div id="actions">
+    <div class="info"><div class="label">YOUR STACK</div><div class="value" id="stack-you">1,000</div><div class="sub" id="to-call"></div></div>
+    <button id="btn-fold" class="btn red" title="Fold (F)">FOLD</button>
+    <button id="btn-check" class="btn green" title="Check / Call (C or Space)">CHECK</button>
+    <div class="raisebox">
+      <div class="presets"><button class="preset" data-p="min">MIN</button><button class="preset" data-p="half">&frac12; POT</button><button class="preset" data-p="pot">POT</button><button class="preset" data-p="max">MAX</button></div>
+      <div class="sliderrow"><input id="slider" type="range" min="0" max="100" step="1"><input id="amount" type="number" min="0"></div>
+      <button id="btn-raise" class="btn gold" title="Bet / Raise (R)">RAISE</button>
+    </div>
+    <button id="btn-allin" class="btn dark" title="All in (A)">ALL IN</button>
+  </div>
+
+  <div id="help" class="hidden"><div class="panel"><h2>NO-LIMIT TEXAS HOLD'EM</h2>
+    <ul class="rules">
+      <li>Six seats, blinds 5/10, 1,000 buy-in. The dealer button moves clockwise; the small and big blinds post before the deal (heads-up: the button posts the small blind and acts first before the flop).</li>
+      <li>Each player gets two hole cards. Betting on the pre-flop, flop (three community cards), turn and river. Best five of seven cards wins; ties split the pot, odd chips go to the first seat after the button.</li>
+      <li>No-limit: bet or raise any amount from the minimum (the size of the last bet or raise) up to your stack. An all-in for less than a full raise does not re-open the betting for players who already acted.</li>
+      <li>Side pots are built from each player&rsquo;s contributions so you can only win what you covered. All-in hands run out automatically.</li>
+      <li>You have 20 seconds to act; the timer checks or folds for you. Busted opponents re-buy; use REBUY when you run out. <code>?tourney=1</code> raises the blinds every eight hands with no re-buys.</li>
+    </ul>
+    <p class="hint">Keys: F fold &middot; C or Space check/call &middot; R raise &middot; A all-in &middot; &uarr;&darr; adjust raise &middot; H help &middot; M mute. Opponents: Vic (tight-passive), Luna (loose-aggressive), Benny (calling station), Rex (maniac), Sofia (solid). Play money only &mdash; unofficial recreation.</p>
+    <button id="help-close" class="btn gold">CLOSE</button></div></div>
+
+  <div id="splash"><div class="inner"><img class="logo" src="assets/logo.png" alt="TEXAS HOLD'EM" onerror="this.style.display='none'"><div class="sub">6-MAX NO-LIMIT &middot; FIVE OPPONENTS</div><div id="splash-text">LOADING&hellip;</div><div class="note">Unofficial recreation &middot; play money only &middot; sound on</div></div></div>
+</div>
+
+<script src="js/cards.js"></script>
+<script src="js/equity.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/audio-poker.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
